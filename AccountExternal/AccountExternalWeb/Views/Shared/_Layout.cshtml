@@ -1,0 +1,52 @@
+﻿@using System.Web.Optimization;
+@using ExternalAccountWebAuthentication.Authentication;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+
+    @Html.Partial("_PartialCSS")
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <a class="navbar-brand" href="~/Home">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            Home
+        </a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                        User
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="~/User">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="~/User/Create">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Create
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="~/Home/About"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">@Cookies.Username</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="MainContainer" class="body-content" ng-app="App">
+        @Html.Partial("_PartialScript")
+        @Scripts.Render("~/bundles/AngularJS")
+        @RenderBody()
+    </div>
+</body>
+</html>
