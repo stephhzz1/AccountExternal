@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.CredentialId;
+        vm.RoleId;
 
         vm.AssignedRoles = [];
         vm.Roles = [];

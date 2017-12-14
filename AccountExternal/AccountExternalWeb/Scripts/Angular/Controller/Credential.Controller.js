@@ -24,7 +24,6 @@
 
         function Initialise() {
             Read();
-            ;
         }
         
         function Read() {

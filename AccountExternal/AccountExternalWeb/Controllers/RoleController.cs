@@ -29,8 +29,14 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Read
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public JsonResult Index()
+        public JsonResult Read()
         {
             return Json(_iFRole.Read("Name"));
         }
