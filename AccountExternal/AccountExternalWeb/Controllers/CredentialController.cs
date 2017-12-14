@@ -32,7 +32,7 @@ namespace AccountExternalWeb.Controllers
         public ActionResult Create(Credential credential)
         {
             var createdCredential = _iFCredential.Create(CredentialId, credential);
-            _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles.ToList());
+            _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles);
             return RedirectToAction("Index");
         }
         #endregion
@@ -105,7 +105,7 @@ namespace AccountExternalWeb.Controllers
         public ActionResult Update(Credential credential)
         {
             var createdCredential = _iFCredential.Update(CredentialId, credential);
-            _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles.ToList());
+            _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles);
             return RedirectToAction("Index");
         }
         #endregion

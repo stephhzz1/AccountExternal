@@ -3,28 +3,28 @@
 
     angular
         .module('App')
-        .factory('CredentialService', CredentialService);
+        .factory('RoleService', RoleService);
 
-    CredentialService.$inject = ['$http'];
+    RoleService.$inject = ['$http'];
 
-    function CredentialService($http) {
+    function RoleService($http) {
         return {
             Read: Read,
-            Delete: Delete
+            ReadAssignedRole: ReadAssignedRole
         }
 
         function Read() {
             return $http({
                 method: 'POST',
-                url: '/Credential/Read',
+                url: '/Role/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
 
-        function Delete(credentialId) {
+        function ReadAssignedRole(credentialId) {
             return $http({
-                method: 'DELETE',
-                url: '/Credentiala/Delete/' + credentialId,
+                method: 'POST',
+                url: '/Role/ReadAssignedRole/' + credentialId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

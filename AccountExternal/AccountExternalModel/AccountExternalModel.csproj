@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Credential.cs" />
     <Compile Include="CredentialRole.cs" />
-    <Compile Include="ERole.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
