@@ -24,7 +24,7 @@
         function Delete(credentialId) {
             return $http({
                 method: 'DELETE',
-                url: '/Credentiala/Delete/' + credentialId,
+                url: '/Credential/Delete/' + credentialId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

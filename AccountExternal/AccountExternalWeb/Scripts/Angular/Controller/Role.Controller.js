@@ -16,6 +16,8 @@
         vm.AssignedRoles = [];
         vm.Roles = [];
 
+        vm.Delete = Delete;
+
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.UpdateRole = UpdateRole;
@@ -66,6 +68,7 @@
 
                 });
         }
+
         function Delete(roleId) {
             RoleService.Delete(roleId)
                 .then(function (response) {
