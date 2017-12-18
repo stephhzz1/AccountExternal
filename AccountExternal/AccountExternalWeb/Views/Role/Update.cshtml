@@ -1,5 +1,5 @@
 ﻿@using AccountExternalModel;
-@model Credential
+@model Role
 
 @{
     ViewBag.Title = "Update";
@@ -9,9 +9,9 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <form action="~/Credential/Update" method="post">
+        <form action="~/Role/Update" method="post">
             @{
-                Html.RenderPartial("_Credential", Model);
+                Html.RenderPartial("_Role", Model);
             }
         </form>
     </div>

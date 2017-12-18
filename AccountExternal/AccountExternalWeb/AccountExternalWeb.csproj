@@ -366,7 +366,9 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\Angular\app.module.js" />
+    <Content Include="Scripts\Angular\Controller\Role.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Credential.Controller.js" />
+    <Content Include="Scripts\Angular\Service\Role.Service.js" />
     <Content Include="Scripts\Angular\Service\Credential.Service.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -377,6 +379,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\CredentialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -588,6 +591,10 @@
     <Content Include="Views\Credential\Index.cshtml" />
     <Content Include="Views\Credential\_Credential.cshtml" />
     <Content Include="Views\Credential\Login.cshtml" />
+    <Content Include="Views\Role\_Role.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Update.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
