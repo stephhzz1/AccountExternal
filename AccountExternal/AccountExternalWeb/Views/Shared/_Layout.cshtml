@@ -16,26 +16,52 @@
         </a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                
+                @*Start Credential Dropdown*@
                 <li>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-key" aria-hidden="true"></i>
-                        User
+                        Credential
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="nav-link" href="~/User">
+                            <a class="nav-link" href="~/Credential">
                                 <i class="fa fa-list" aria-hidden="true"></i>
                                 List
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link" href="~/User/Create">
+                            <a class="nav-link" href="~/Credential/Create">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                 Create
                             </a>
                         </li>
                     </ul>
                 </li>
+                @*End Credential Dropdown*@
+
+                @*Start Role Dropdown*@
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                        Role
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="~/Role">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="~/Role/Create">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Create
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @*End Role Dropdown*@
                 <li><a href="~/Home/About"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

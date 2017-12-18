@@ -5,19 +5,17 @@
         .module('App')
         .controller('CredentialController', CredentialController);
 
-    CredentialController.$inject = ['$filter', '$window','EmployeeService', 'CredentialService'];
+    CredentialController.$inject = ['$filter', '$window', 'CredentialService', 'RoleService'];
 
-    function CredentialController($filter, $window, EmployeeService, CredentialService) {
+    function CredentialController($filter, $window, CredentialService, RoleService) {
         var vm = this;
 
-        vm.Employees = [];
+       
         vm.Credentials = [];
-
+         
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
-
-        vm.UpdateEmployee = UpdateEmployee;
-
+        
         vm.Delete = Delete;
         
         function GoToUpdatePage(credentialId) {
@@ -26,26 +24,8 @@
 
         function Initialise() {
             Read();
-            ReadEmployees();
         }
-
-        function ReadEmployees() {
-            EmployeeService.Read()
-                .then(function (response) {
-                    vm.Employees = response.data;
-                })
-                .catch(function (data, status) {
-                    new PNotify({
-                        title: status,
-                        text: data,
-                        type: 'error',
-                        hide: true,
-                        addclass: "stack-bottomright"
-                    });
-
-                });
-        }
-
+        
         function Read() {
             CredentialService.Read()
                 .then(function (response) {
@@ -63,10 +43,6 @@
                 });
         }
 
-        function UpdateEmployee(credential) {
-            credential.Employee = $filter('filter')(vm.Employees, { EmployeeId: credential.EmployeeId })[0];
-        }
-
         function Delete(credentialId) {
             CredentialService.Delete(credentialId)
                 .then(function (response) {
@@ -82,6 +58,5 @@
                     });
                 });
         }
-
     }
 })();
