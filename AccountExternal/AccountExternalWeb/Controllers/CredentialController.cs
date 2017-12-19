@@ -77,6 +77,7 @@ namespace AccountExternalWeb.Controllers
                     credentialCookies["CredentialId"] = encryptedId;
                     credentialCookies.Expires = DateTime.Now.AddHours(24);
                     Response.Cookies.Add(credentialCookies);
+                    Session.Abandon();
                     return Redirect("~/Home");
                 }
                 return View();

@@ -77,10 +77,15 @@ namespace ExternalAccountWebAuthentication.Authentication
             }
             else if (Cookies.IsLoggedIn)
             {
+                _iDCredential = new DCredential();
+                _iDRole = new DRole();
+                _iFCredential = new FCredential(_iDCredential);
+                _iFRole = new FRole(_iDRole);
+
                 authorized = _iFRole.HasRole(Cookies.CredentialId, AllowedRoles);
+              
             }
             
-
             if (!authorized && !string.IsNullOrEmpty(RedirectController) && !string.IsNullOrEmpty(RedirectMethod))
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = RedirectController, action = RedirectMethod }));
