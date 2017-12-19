@@ -595,6 +595,7 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Credential\_Password.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
