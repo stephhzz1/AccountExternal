@@ -72,7 +72,6 @@ namespace ExternalAccountWebAuthentication.Authentication
                 authorized = _iFRole.HasRole(Cookies.CredentialId, AllowedRoles);
             }
             
-
             if (!authorized && !string.IsNullOrEmpty(RedirectController) && !string.IsNullOrEmpty(RedirectMethod))
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = RedirectController, action = RedirectMethod }));
