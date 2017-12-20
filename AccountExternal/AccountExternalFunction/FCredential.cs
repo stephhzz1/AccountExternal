@@ -90,9 +90,9 @@ namespace AccountExternalFunction
             var oldECredential = _iDCredential.Read<ECredential>(a => a.CredentialId == credential.CredentialId);
             eCredential.Password = oldECredential.Password;
             eCredential.Salt = oldECredential.Salt;
-            
-            //eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
-            //eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.Password + eCredential.Salt);
+
+            eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
+            eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.Password + eCredential.Salt);
 
             eCredential = _iDCredential.Update(eCredential);
             return Credential(eCredential);
