@@ -119,5 +119,9 @@ namespace AccountExternalWeb.Controllers
             return Json(string.Empty);
         }
         #endregion
+
+        #region Other Function
+
+        #endregion
     }
 }

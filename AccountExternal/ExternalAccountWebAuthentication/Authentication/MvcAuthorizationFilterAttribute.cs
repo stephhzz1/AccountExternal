@@ -37,6 +37,10 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowedRoles = allowedRoles;
             RedirectController = string.Empty;
             RedirectMethod = string.Empty;
+            _iDCredential = new DCredential();
+            _iDRole = new DRole();
+            _iFCredential = new FCredential(_iDCredential);
+            _iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod)
@@ -44,7 +48,11 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowAnonymous = allowAnonymous;
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
-            AllowedRoles = new string[0];   
+            AllowedRoles = new string[0];
+            _iDCredential = new DCredential();
+            _iDRole = new DRole();
+            _iFCredential = new FCredential(_iDCredential);
+            _iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod, string[] allowedRoles)
