@@ -62,10 +62,6 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowedRoles = allowedRoles;
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -77,6 +73,11 @@ namespace ExternalAccountWebAuthentication.Authentication
             }
             else if (Cookies.IsLoggedIn)
             {
+                _iDCredential = new DCredential();
+                _iDRole = new DRole();
+                _iFCredential = new FCredential(_iDCredential);
+                _iFRole = new FRole(_iDRole);
+
                 authorized = _iFRole.HasRole(Cookies.CredentialId, AllowedRoles);
             }
             
