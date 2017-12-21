@@ -28,7 +28,6 @@ namespace ExternalAccountWebAuthentication.Authentication
             _iDCredential = new DCredential();
             _iDRole = new DRole();
             _iFCredential = new FCredential(_iDCredential);
-            _iDRole = new DRole();
             _iFRole = new FRole(_iDRole);
         }
 
@@ -51,8 +50,8 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectMethod = redirectMethod;
             AllowedRoles = new string[0];
             _iDCredential = new DCredential();
-            _iFCredential = new FCredential(_iDCredential);
             _iDRole = new DRole();
+            _iFCredential = new FCredential(_iDCredential);
             _iFRole = new FRole(_iDRole);
         }
 
@@ -81,7 +80,6 @@ namespace ExternalAccountWebAuthentication.Authentication
                 authorized = _iFRole.HasRole(Cookies.CredentialId, AllowedRoles);
             }
             
-
             if (!authorized && !string.IsNullOrEmpty(RedirectController) && !string.IsNullOrEmpty(RedirectMethod))
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = RedirectController, action = RedirectMethod }));
