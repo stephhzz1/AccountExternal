@@ -25,6 +25,7 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectController = string.Empty;
             RedirectMethod = string.Empty;
             AllowedRoles = new string[0];
+            //Error in FCredential Create
             _iDCredential = new DCredential();
             _iDRole = new DRole();
             _iFCredential = new FCredential(_iDCredential);
@@ -37,6 +38,7 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowedRoles = allowedRoles;
             RedirectController = string.Empty;
             RedirectMethod = string.Empty;
+            //Error about update credential
             _iDCredential = new DCredential();
             _iDRole = new DRole();
             _iFCredential = new FCredential(_iDCredential);
@@ -49,6 +51,7 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
             AllowedRoles = new string[0];
+            //Error in FCredential Create
             _iDCredential = new DCredential();
             _iDRole = new DRole();
             _iFCredential = new FCredential(_iDCredential);

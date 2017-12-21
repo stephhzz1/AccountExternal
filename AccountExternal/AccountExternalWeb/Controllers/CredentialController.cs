@@ -96,6 +96,12 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
+        [HttpGet] //Added
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Update(int id)
         {
