@@ -598,6 +598,9 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Update.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Credential\_Password.cshtml" />
+    <Content Include="Views\Password\_ChangePassword.cshtml" />
+    <Content Include="Views\Password\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -640,7 +643,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55711</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
