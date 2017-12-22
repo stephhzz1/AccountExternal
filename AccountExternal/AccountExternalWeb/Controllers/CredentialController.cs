@@ -38,8 +38,14 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Read
-        [HttpGet]
+        [HttpGet] //added
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
         {
             return View();
         }
@@ -96,11 +102,11 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
-        [HttpGet] //Added
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
+        //[HttpGet] //Added
+        //public ActionResult ChangePassword()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public ActionResult Update(int id)

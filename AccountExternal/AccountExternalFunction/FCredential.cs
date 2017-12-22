@@ -87,8 +87,12 @@ namespace AccountExternalFunction
             eCredential.UpdatedDate = DateTime.Now;
             eCredential.UpdatedBy = updatedBy;
 
-            eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
-            eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.Password + eCredential.Salt);
+            var oldECredential = _iDCredential.Read<ECredential>(a => a.CredentialId == credential.CredentialId);
+            oldECredential.Salt = credential.Password;
+            oldECredential.Password = credential.Password;
+
+            //eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
+            //eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.Password + eCredential.Salt);
 
             eCredential = _iDCredential.Update(eCredential);
             return Credential(eCredential);

@@ -23,13 +23,6 @@
                     <tr class="clickableRow" ng-repeat="role in model.Roles" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(role.RoleId)" ng-init="model.UpdateEmployee(role)">
                         <td><span ng-bind="role.Name"></span></td>
                         <td><span ng-bind="role.Description"></span></td>
-                        @*<td>
-                            <ul>
-                                <li ng-repeat="credentialRole in role.CredentialRoles">
-                                    <span ng-bind="credentialRole.Role.Name"></span>
-                                </li>
-                            </ul>
-                        </td>*@
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
