@@ -15,12 +15,15 @@
                 <thead>
                     <tr class="thead-inverse">
                         <th>Role Description</th>
+                        <th>Access Level</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="role in model.Roles" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(role.RoleId)" ng-init="model.UpdateEmployee(role)">
                         <td><span ng-bind="role.Name"></span></td>
+                        <td><span ng-bind="role.Description"></span></td>
+                        
                         @*<td>
                             <ul>
                                 <li ng-repeat="credentialRole in role.CredentialRoles">
