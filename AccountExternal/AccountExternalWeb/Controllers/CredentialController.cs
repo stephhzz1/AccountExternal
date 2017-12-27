@@ -96,10 +96,17 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
-        [HttpGet] //Added
+        [HttpGet]
         public ActionResult ChangePassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(Credential credential)
+        {
+            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -114,6 +121,15 @@ namespace AccountExternalWeb.Controllers
             var createdCredential = _iFCredential.Update(CredentialId, credential);
             _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Signout()
+        {
+            HttpCookie credentialCookies = new HttpCookie("Credential");
+            credentialCookies.Expires = DateTime.Now.AddHours(-1);
+            Response.Cookies.Add(credentialCookies);
+            return Redirect("~/Home");
         }
         #endregion
 
