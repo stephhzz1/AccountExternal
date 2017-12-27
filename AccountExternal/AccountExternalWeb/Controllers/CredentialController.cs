@@ -42,7 +42,7 @@ namespace AccountExternalWeb.Controllers
         public ActionResult Index()
         {
             return View();
-        } 
+        }
 
         [Route("Login")]
         [MvcAuthorizationFilter(true)]
@@ -66,6 +66,7 @@ namespace AccountExternalWeb.Controllers
         {
             try
             {
+                
                 credential = _iFCredential.Login(credential);
                 bool isLogin = credential.CredentialId > 0;
                 if (isLogin)
@@ -95,17 +96,10 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
-        [HttpGet]
+        [HttpGet] //Added
         public ActionResult ChangePassword()
         {
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult ChangePassword(Credential credential)
-        {
-            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            return RedirectToAction("Index");
         }
 
         [HttpGet]
