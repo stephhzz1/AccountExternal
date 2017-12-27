@@ -38,17 +38,11 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Read
-        [HttpGet] //added
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
-        }
-
-        [HttpGet]
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
+        } 
 
         [Route("Login")]
         [MvcAuthorizationFilter(true)]
@@ -83,7 +77,6 @@ namespace AccountExternalWeb.Controllers
                     credentialCookies["CredentialId"] = encryptedId;
                     credentialCookies.Expires = DateTime.Now.AddHours(24);
                     Response.Cookies.Add(credentialCookies);
-                    Session.Abandon();
                     return Redirect("~/Home");
                 }
                 return View();
@@ -102,11 +95,18 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
-        //[HttpGet] //Added
-        //public ActionResult ChangePassword()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(Credential credential)
+        {
+            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public ActionResult Update(int id)

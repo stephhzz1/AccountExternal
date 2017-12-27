@@ -26,10 +26,10 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectMethod = string.Empty;
             AllowedRoles = new string[0];
             //Error in FCredential Create
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
+            //_iDCredential = new DCredential();
+            //_iDRole = new DRole();
+            //_iFCredential = new FCredential(_iDCredential);
+            //_iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string[] allowedRoles)
@@ -39,10 +39,10 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectController = string.Empty;
             RedirectMethod = string.Empty;
             //Error about update credential
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
+            //_iDCredential = new DCredential();
+            //_iDRole = new DRole();
+            //_iFCredential = new FCredential(_iDCredential);
+            //_iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod)
@@ -52,10 +52,10 @@ namespace ExternalAccountWebAuthentication.Authentication
             RedirectMethod = redirectMethod;
             AllowedRoles = new string[0];
             //Error in FCredential Create
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
+            //_iDCredential = new DCredential();
+            //_iDRole = new DRole();
+            //_iFCredential = new FCredential(_iDCredential);
+            //_iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod, string[] allowedRoles)

@@ -81,6 +81,22 @@ namespace AccountExternalFunction
         #endregion
 
         #region Update
+        public Credential ChangePassword(int updatedBy, Credential credential)
+        {
+            ECredential eCredential = _iDCredential.Read<ECredential>(a => a.Username == credential.Username && a.IsActive == true);
+            if (eCredential != null && BCrypt.Net.BCrypt.Verify(credential.Password + eCredential.Salt, eCredential.Password))
+            {
+                eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
+                eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.NewPassword + eCredential.Salt);
+                eCredential = _iDCredential.Update(eCredential);
+                return Credential(eCredential);
+            }
+            else
+            {
+                return credential;
+            }
+        }
+
         public Credential Update(int updatedBy, Credential credential)
         {
             var eCredential = ECredential(credential);
@@ -88,8 +104,8 @@ namespace AccountExternalFunction
             eCredential.UpdatedBy = updatedBy;
 
             var oldECredential = _iDCredential.Read<ECredential>(a => a.CredentialId == credential.CredentialId);
-            oldECredential.Salt = credential.Password;
-            oldECredential.Password = credential.Password;
+            eCredential.Salt = oldECredential.Salt;
+            eCredential.Password = oldECredential.Password;
 
             //eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
             //eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.Password + eCredential.Salt);
@@ -185,7 +201,7 @@ namespace AccountExternalFunction
                             UpdatedBy = b.Role.UpdatedBy,
 
                             Name = b.Role.Name,
-                            Description = b.Role.Description,
+                            //Description = b.Role.Description,
                         }
                     }).ToList()
             }).ToList();

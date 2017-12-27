@@ -13,7 +13,7 @@ namespace AccountExternalEntity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int CredentialId { get; set; }
-
+        
         [StringLength(100)]
         public string Email { get; set; }
         [Required]
