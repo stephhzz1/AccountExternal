@@ -28,7 +28,6 @@ namespace ExternalAccountWebAuthentication.Authentication
             _iDCredential = new DCredential();
             _iDRole = new DRole();
             _iFCredential = new FCredential(_iDCredential);
-            _iDRole = new DRole();
             _iFRole = new FRole(_iDRole);
         }
 
@@ -38,10 +37,6 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowedRoles = allowedRoles;
             RedirectController = string.Empty;
             RedirectMethod = string.Empty;
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod)
@@ -49,11 +44,7 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowAnonymous = allowAnonymous;
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
-            AllowedRoles = new string[0];
-            _iDCredential = new DCredential();
-            _iFCredential = new FCredential(_iDCredential);
-            _iDRole = new DRole();
-            _iFRole = new FRole(_iDRole);
+            AllowedRoles = new string[0];   
         }
 
         public MvcAuthorizationFilterAttribute(bool allowAnonymous, string redirectController, string redirectMethod, string[] allowedRoles)
@@ -62,10 +53,6 @@ namespace ExternalAccountWebAuthentication.Authentication
             AllowedRoles = allowedRoles;
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
-            _iDCredential = new DCredential();
-            _iDRole = new DRole();
-            _iFCredential = new FCredential(_iDCredential);
-            _iFRole = new FRole(_iDRole);
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -83,7 +70,6 @@ namespace ExternalAccountWebAuthentication.Authentication
                 _iFRole = new FRole(_iDRole);
 
                 authorized = _iFRole.HasRole(Cookies.CredentialId, AllowedRoles);
-              
             }
             
             if (!authorized && !string.IsNullOrEmpty(RedirectController) && !string.IsNullOrEmpty(RedirectMethod))
