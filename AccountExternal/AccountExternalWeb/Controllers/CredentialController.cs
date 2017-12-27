@@ -112,6 +112,12 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
+        [HttpGet] //Added
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -148,6 +154,10 @@ namespace AccountExternalWeb.Controllers
             _iFCredential.Delete(id);
             return Json(string.Empty);
         }
+        #endregion
+
+        #region Other Function
+
         #endregion
     }
 }

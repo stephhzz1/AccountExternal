@@ -138,7 +138,7 @@ namespace AccountExternalFunction
 
                 Email = eCredential.Email,
                 Username = eCredential.Username,
-                Password = eCredential.Password, //add
+                Password = eCredential.Password,
             };
         }
 
@@ -157,7 +157,7 @@ namespace AccountExternalFunction
 
                 Email = a.Email,
                 Username = a.Username,
-                Password = a.Password, //add
+                Password = a.Password,
 
                 CredentialRoles = a.CredentialRoles.Select(b =>
                     new CredentialRole
@@ -180,7 +180,8 @@ namespace AccountExternalFunction
                             RoleId = b.Role.RoleId,
                             UpdatedBy = b.Role.UpdatedBy,
 
-                            Name = b.Role.Name
+                            Name = b.Role.Name,
+                            Description = b.Role.Description,
                         }
                     }).ToList()
             }).ToList();
