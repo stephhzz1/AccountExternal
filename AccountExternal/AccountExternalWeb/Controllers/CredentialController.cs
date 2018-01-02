@@ -66,7 +66,6 @@ namespace AccountExternalWeb.Controllers
         {
             try
             {
-                
                 credential = _iFCredential.Login(credential);
                 bool isLogin = credential.CredentialId > 0;
                 if (isLogin)
@@ -106,7 +105,10 @@ namespace AccountExternalWeb.Controllers
         public ActionResult ChangePassword(Credential credential)
         {
             var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            //if (credential.Password == credential.Password) { }
+            if (credential.Password == credential.Password)
+            {
+                
+            }
             return Redirect("~/Home");
         }
 
