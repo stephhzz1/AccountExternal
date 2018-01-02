@@ -16,12 +16,15 @@ namespace AccountExternalEntity
         
         [StringLength(100)]
         public string Email { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Password { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Salt { get; set; }
+
         [Required]
         [StringLength(100)]
         [Index("Credential_Unique", 1, IsUnique = true)]

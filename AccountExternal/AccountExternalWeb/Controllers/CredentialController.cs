@@ -106,7 +106,8 @@ namespace AccountExternalWeb.Controllers
         public ActionResult ChangePassword(Credential credential)
         {
             var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            return RedirectToAction("Index");
+            //if (credential.Password == credential.Password) { }
+            return Redirect("~/Home");
         }
 
         [HttpGet]
