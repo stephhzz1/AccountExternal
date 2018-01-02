@@ -66,6 +66,7 @@ namespace AccountExternalWeb.Controllers
         {
             try
             {
+                
                 credential = _iFCredential.Login(credential);
                 bool isLogin = credential.CredentialId > 0;
                 if (isLogin)
@@ -96,6 +97,20 @@ namespace AccountExternalWeb.Controllers
 
         #region Update
         [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(Credential credential)
+        {
+            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            //if (credential.Password == credential.Password) { }
+            return Redirect("~/Home");
+        }
+
+        [HttpGet]
         public ActionResult Update(int id)
         {
             return View(_iFCredential.Read(id));
@@ -108,6 +123,15 @@ namespace AccountExternalWeb.Controllers
             _iFCredentialRole.Create(CredentialId, createdCredential.CredentialId, credential.CredentialRoles);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Signout()
+        {
+            HttpCookie credentialCookies = new HttpCookie("Credential");
+            credentialCookies.Expires = DateTime.Now.AddHours(-1);
+            Response.Cookies.Add(credentialCookies);
+            return Redirect("~/Home");
+        }
         #endregion
 
         #region Delete
@@ -117,6 +141,10 @@ namespace AccountExternalWeb.Controllers
             _iFCredential.Delete(id);
             return Json(string.Empty);
         }
+        #endregion
+
+        #region Other Function
+
         #endregion
     }
 }
