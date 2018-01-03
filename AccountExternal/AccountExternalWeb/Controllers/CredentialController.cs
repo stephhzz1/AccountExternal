@@ -15,6 +15,7 @@ namespace AccountExternalWeb.Controllers
     {
         private IFCredential _iFCredential;
         private IFCredentialRole _iFCredentialRole;
+        private FCredential _ChangePassword;
         public CredentialController(IFCredential iFCredential, IFCredentialRole iFCredentialRole)
         {
             _iFCredential = iFCredential;
@@ -105,7 +106,11 @@ namespace AccountExternalWeb.Controllers
         public ActionResult ChangePassword(Credential credential)
         {
             var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            if (credential.Password == credential.Password)
+            if (!ModelState.IsValid)
+            {
+                return View(credential);
+            }
+            else if (ModelState.IsValid)
             {
                 
             }
