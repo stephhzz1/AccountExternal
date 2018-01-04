@@ -1,4 +1,4 @@
-﻿using AccountExternalFunction;
+using AccountExternalFunction;
 using AccountExternalModel;
 using ExternalAccountWebAuthentication.Authentication;
 using System;
@@ -66,7 +66,6 @@ namespace AccountExternalWeb.Controllers
         {
             try
             {
-                
                 credential = _iFCredential.Login(credential);
                 bool isLogin = credential.CredentialId > 0;
                 if (isLogin)
@@ -79,10 +78,6 @@ namespace AccountExternalWeb.Controllers
                     credentialCookies.Expires = DateTime.Now.AddHours(24);
                     Response.Cookies.Add(credentialCookies);
                     return Redirect("~/Home");
-                    
-                  
-
-
                 }
                 return View();
             }
@@ -90,7 +85,6 @@ namespace AccountExternalWeb.Controllers
             {
                 return Json("Error on logging in");
             }
-
         }
 
         [HttpPost]
@@ -98,24 +92,28 @@ namespace AccountExternalWeb.Controllers
         {
             return Json(_iFCredential.Read());
         }
-        //protected void RemoveCookie(object sender, EventArgs e)
-        //{
-        //    //Fetch the Cookie using its Key.
-        //    HttpCookie nameCookie = Request.Cookies["Name"];
-
-        //    //Set the Expiry date to past date.
-        //    nameCookie.Expires = DateTime.Now.AddDays(-1);
-
-        //    //Update the Cookie in Browser.
-        //    Response.Cookies.Add(nameCookie);
-        //}
         #endregion
 
         #region Update
-        [HttpGet] //Added
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] { })]
+        [HttpGet]
         public ActionResult ChangePassword()
         {
             return View();
+        }
+
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] {  })]
+        [HttpPost]
+        public ActionResult ChangePassword(Credential credential)
+        {
+            if (ModelState.IsValid)
+                var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            }
+            else if (!ModelState.IsValid)
+            {
+                return View(credential);
+            }
+            return Redirect("~/Home");
         }
 
         [HttpGet]
@@ -138,13 +136,8 @@ namespace AccountExternalWeb.Controllers
             HttpCookie credentialCookies = new HttpCookie("Credential");
             credentialCookies.Expires = DateTime.Now.AddHours(-1);
             Response.Cookies.Add(credentialCookies);
-            return RedirectToAction("Login");
-
+            return Redirect("~/Home");
         }
-
-
-
-
         #endregion
 
         #region Delete
