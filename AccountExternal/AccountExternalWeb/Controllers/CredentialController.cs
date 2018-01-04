@@ -1,4 +1,4 @@
-﻿using AccountExternalFunction;
+using AccountExternalFunction;
 using AccountExternalModel;
 using ExternalAccountWebAuthentication.Authentication;
 using System;
@@ -15,7 +15,6 @@ namespace AccountExternalWeb.Controllers
     {
         private IFCredential _iFCredential;
         private IFCredentialRole _iFCredentialRole;
-        private FCredential _ChangePassword;
         public CredentialController(IFCredential iFCredential, IFCredentialRole iFCredentialRole)
         {
             _iFCredential = iFCredential;
@@ -96,17 +95,18 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] { })]
         [HttpGet]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] {  })]
         [HttpPost]
         public ActionResult ChangePassword(Credential credential)
         {
             if (ModelState.IsValid)
-            {
                 var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
             }
             else if (!ModelState.IsValid)
