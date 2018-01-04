@@ -105,14 +105,13 @@ namespace AccountExternalWeb.Controllers
         [HttpPost]
         public ActionResult ChangePassword(Credential credential)
         {
-            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            }
+            else if (!ModelState.IsValid)
             {
                 return View(credential);
-            }
-            else if (ModelState.IsValid)
-            {
-                //Error 404
             }
             return Redirect("~/Home");
         }
