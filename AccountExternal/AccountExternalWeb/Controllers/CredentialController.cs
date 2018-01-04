@@ -1,4 +1,4 @@
-﻿using AccountExternalFunction;
+using AccountExternalFunction;
 using AccountExternalModel;
 using ExternalAccountWebAuthentication.Authentication;
 using System;
@@ -107,7 +107,6 @@ namespace AccountExternalWeb.Controllers
         public ActionResult ChangePassword(Credential credential)
         {
             if (ModelState.IsValid)
-            {
                 var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
             }
             else if (!ModelState.IsValid)
