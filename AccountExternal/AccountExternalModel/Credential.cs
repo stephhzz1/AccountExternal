@@ -28,7 +28,7 @@ namespace AccountExternalModel
         public string ConfirmPassword { get; set; }
 
         public string Salt { get; set; }
-
+        
         public string Username { get; set; }
 
 
