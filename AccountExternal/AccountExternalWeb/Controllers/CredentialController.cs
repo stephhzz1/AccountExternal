@@ -66,7 +66,6 @@ namespace AccountExternalWeb.Controllers
         {
             try
             {
-                
                 credential = _iFCredential.Login(credential);
                 bool isLogin = credential.CredentialId > 0;
                 if (isLogin)
@@ -96,17 +95,25 @@ namespace AccountExternalWeb.Controllers
         #endregion
 
         #region Update
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] { })]
         [HttpGet]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
+        [MvcAuthorizationFilterAttribute(false, "Credential", "Login", new string[] {  })]
         [HttpPost]
         public ActionResult ChangePassword(Credential credential)
         {
-            var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
-            //if (credential.Password == credential.Password) { }
+            if (ModelState.IsValid)
+            {
+                var createdCredential = _iFCredential.ChangePassword(CredentialId, credential);
+            }
+            else if (!ModelState.IsValid)
+            {
+                return View(credential);
+            }
             return Redirect("~/Home");
         }
 

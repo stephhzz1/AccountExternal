@@ -15,7 +15,7 @@ namespace AccountExternalFunction
         {
             _iDCredential = iDCredential;
         }
-
+       
         public FCredential()
         {
             _iDCredential = new DCredential();
@@ -81,7 +81,7 @@ namespace AccountExternalFunction
         #endregion
 
         #region Update
-        public Credential ChangePassword(int updatedBy, Credential credential)
+        public bool ChangePassword(int updatedBy, Credential credential)
         {
             ECredential eCredential = _iDCredential.Read<ECredential>(a => a.Username == credential.Username && a.IsActive == true);
             if (eCredential != null && BCrypt.Net.BCrypt.Verify(credential.Password + eCredential.Salt, eCredential.Password))
@@ -89,11 +89,11 @@ namespace AccountExternalFunction
                 eCredential.Salt = BCrypt.Net.BCrypt.GenerateSalt();
                 eCredential.Password = BCrypt.Net.BCrypt.HashPassword(credential.NewPassword + eCredential.Salt);
                 eCredential = _iDCredential.Update(eCredential);
-                return Credential(eCredential);
+                return true;
             }
             else
             {
-                return credential;
+                return false;
             }
         }
 
